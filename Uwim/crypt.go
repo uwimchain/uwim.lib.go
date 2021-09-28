@@ -1,4 +1,4 @@
-package crypt
+package Uwim
 
 import (
 	"crypto/aes"
