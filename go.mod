@@ -1,4 +1,4 @@
-module uwim.lib.go
+module github.com/uwimchain
 
 go 1.15
 
