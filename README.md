@@ -6,10 +6,13 @@
 go get github.com/uwimchain/uwim.lib.go
 ```
 
+```go
+import "github.com/uwimchain/uwim.lib.go"
+```
 <h2>Генерация мнемонической фразы</h2>
 
 ```go
-mnemonic, err := Uwim.GenerateMnemonic()
+mnemonic, err := uwim_lib_go.GenerateMnemonic()
 ```
 
 Для генерации публичного, секретного ключей или адреса из мнемонической фразы можно использовать готовую мнемофразу.
@@ -17,19 +20,19 @@ mnemonic, err := Uwim.GenerateMnemonic()
 <h2>Генерация Seed строки из мнемонической фразы</h2>
   
 ```go
-seed, err := Uwim.SeedFromMnemonic(mnemonic)
+seed, err := uwim_lib_go.SeedFromMnemonic(mnemonic)
 ```
 <h2>Генерация секретного ключа из Seed строки или мнемонической фразы</h2>
 
 ```go
-secret_key, err := Uwim.SecretKeyFromSeed(seed);<br><br>
-secret_key, err := Uwim.SecretKeyFromMnemonic(mnemonic)
+secret_key, err := uwim_lib_go.SecretKeyFromSeed(seed);<br><br>
+secret_key, err := uwim_lib_go.SecretKeyFromMnemonic(mnemonic)
 ```
 <h2>Генерация публичного из секретного ключа или мнемонической фразы</h2>
 
 ```go
-public_key, err := Uwim.PublicKeyFromSecretKey(secret_key)
-public_key, err := Uwim.PublicKeyFromMnemonic(mnemonic)
+public_key, err := uwim_lib_go.PublicKeyFromSecretKey(secret_key)
+public_key, err := uwim_lib_go.PublicKeyFromMnemonic(mnemonic)
 ```
 <h2>Генерация адреса пользователя из публичного ключа или мнемонической фразы</h2>
 
@@ -38,20 +41,20 @@ public_key, err := Uwim.PublicKeyFromMnemonic(mnemonic)
 <h3>Генерация адреса с префиксом "uw" - адрес кошелька пользователя</h3>
 
 ```go
-uw_address, err := Uwim.AddressFromPublicKey(public_key, "uw")
-uw_address, err := Uwim.AddressFromMnemonic(mnemonic, "uw")
+uw_address, err := uwim_lib_go.AddressFromPublicKey(public_key, "uw")
+uw_address, err := uwim_lib_go.AddressFromMnemonic(mnemonic, "uw")
 ```
 <h3>Генерация адреса с префиксом "sc" - адрес смарт-контракта</h3>
 
 ```go
-sc_address, err := Uwim.AddressFromPublicKey(public_key, "sc")
-sc_address, err := Uwim.AddressFromMnemonic(mnemonic, "sc")
+sc_address, err := uwim_lib_go.AddressFromPublicKey(public_key, "sc")
+sc_address, err := uwim_lib_go.AddressFromMnemonic(mnemonic, "sc")
 ```
 <h3>Генерация адреса с префиксом "nd" - адрес ноды</h3>
 
 ```go
-nd_address, err := Uwim.AddressFromPublicKey(public_key, "nd")
-nd_address, err := Uwim.AddressFromMnemonic(mnemonic, "nd")
+nd_address, err := uwim_lib_go.AddressFromPublicKey(public_key, "nd")
+nd_address, err := uwim_lib_go.AddressFromMnemonic(mnemonic, "nd")
 ```
 <h2>Получение RAW строки транзакции для отправки в API блокчейна</h2>
 
@@ -70,7 +73,7 @@ nd_address, err := Uwim.AddressFromMnemonic(mnemonic, "nd")
 </ul>
   
 ```go
-transaction_raw, err := Uwim.GetRawTransaction(
+transaction_raw, err := uwim_lib_go.GetRawTransaction(
     mnemonic,
     sender_address,
     recipient_addres,
