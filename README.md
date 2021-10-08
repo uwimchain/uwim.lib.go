@@ -1,43 +1,75 @@
 # uwim.lib.go
 
-1. Генерация мнемонической фразы<br><br>
-mnemonic, err := Uwim.GenerateMnemonic();<br><br>
+<h2>Установка:</h2> 
+
+```go
+go get github.com/uwimchain/uwim.lib.go
+```
+
+<h2>Генерация мнемонической фразы</h2>
+
+```go
+mnemonic, err := Uwim.GenerateMnemonic()
+```
+
 Для генерации публичного, секретного ключей или адреса из мнемонической фразы можно использовать готовую мнемофразу.
 
-2. Генерация Seed строки из мнемонической фразы<br><br>
-seed, err := Uwim.SeedFromMnemonic(mnemonic);
-
-3. Генерация секретного ключа из Seed строки или мнемонической фразы<br><br>
-secret_key, err := Uwim.SecretKeyFromSeed(seed);<br><br>
-secret_key, err := Uwim.SecretKeyFromMnemonic(mnemonic);
-
-4. Генерация публичного из секретного ключа или мнемонической фразы<br><br>
-public_key, err := Uwim.PublicKeyFromSecretKey(secret_key);<br><br>
-public_key, err := Uwim.PublicKeyFromMnemonic(mnemonic);
+<h2>Генерация Seed строки из мнемонической фразы</h2>
   
-5. Генерация адреса пользователя из публичного ключа или мнемонической фразы<br><br>
-Для генерации адреса можно использовать публичный ключ или мнемоническую фразу, а также необходимо указать один из трёх доступных префиксов, если вы укажите какой-либо другой префикс, то функция вернёт ошибку<br><br>
-5.1 Генерация адреса с префиксом "uw" - адрес кошелька пользователя<br><br>
-uw_address, err := Uwim.AddressFromPublicKey(public_key, "uw");<br><br>
-uw_address, err := Uwim.AddressFromMnemonic(mnemonic, "uw");<br><br>
-5.2 Генерация адреса с префиксом "sc" - адрес смарт-контракта<br><br>
-sc_address, err := Uwim.AddressFromPublicKey(public_key, "sc");<br><br>
-sc_address, err := Uwim.AddressFromMnemonic(mnemonic, "sc");<br><br>
-5.3 Генерация адреса с префиксом "nd" - адрес ноды<br><br>
-nd_address, err := Uwim.AddressFromPublicKey(public_key, "nd");<br><br>
-nd_address, err := Uwim.AddressFromMnemonic(mnemonic, "nd");<br><br>
+```go
+seed, err := Uwim.SeedFromMnemonic(mnemonic)
+```
+<h2>Генерация секретного ключа из Seed строки или мнемонической фразы</h2>
 
-6. Получение RAW строки транзакции для отправки в API блокчейна<br><br>
-Для того, чтобы сгенерировать RAW строку транзакции, вам необходимо указать такие данные как:<br>
-Мнемоническая фраза (отправителя транзакции);<br>
-Адрес отправителя (должен быть сгенерирован из мнемонической фразы или же подходить к ней);<br>
-Адрес получателя;<br>
-Количество монет, которое вы хотите перевести (для некоторых типов транзакции или подтипов транзакции, количество монет может быть рано нулю);<br>
-Адрес получателя;<br>
-Обозначение токена, монеты которого вы хотите перевести (например: "uwm");<br>
-Подтип пранзакции (например: "default_transaction");<br>
-Данные комментария к транзакции в формате JSON(для каждого типа или подтипа транзакции указываются свои данные комметрария или же не указываются совсем);<br>
-Тип пранзакции (Число 1 или 3);<br><br>
+```go
+secret_key, err := Uwim.SecretKeyFromSeed(seed);<br><br>
+secret_key, err := Uwim.SecretKeyFromMnemonic(mnemonic)
+```
+<h2>Генерация публичного из секретного ключа или мнемонической фразы</h2>
+
+```go
+public_key, err := Uwim.PublicKeyFromSecretKey(secret_key)
+public_key, err := Uwim.PublicKeyFromMnemonic(mnemonic)
+```
+<h2>Генерация адреса пользователя из публичного ключа или мнемонической фразы</h2>
+
+Для генерации адреса можно использовать публичный ключ или мнемоническую фразу, а также необходимо указать один из трёх доступных префиксов, если вы укажите какой-либо другой префикс, то функция вернёт ошибку<br><br>
+
+<h3>Генерация адреса с префиксом "uw" - адрес кошелька пользователя</h3>
+
+```go
+uw_address, err := Uwim.AddressFromPublicKey(public_key, "uw")
+uw_address, err := Uwim.AddressFromMnemonic(mnemonic, "uw")
+```
+<h3>Генерация адреса с префиксом "sc" - адрес смарт-контракта</h3>
+
+```go
+sc_address, err := Uwim.AddressFromPublicKey(public_key, "sc")
+sc_address, err := Uwim.AddressFromMnemonic(mnemonic, "sc")
+```
+<h3>Генерация адреса с префиксом "nd" - адрес ноды</h3>
+
+```go
+nd_address, err := Uwim.AddressFromPublicKey(public_key, "nd")
+nd_address, err := Uwim.AddressFromMnemonic(mnemonic, "nd")
+```
+<h2>Получение RAW строки транзакции для отправки в API блокчейна</h2>
+
+Для того, чтобы сгенерировать RAW строку транзакции, вам необходимо указать такие данные как:
+
+<ul>
+  Мнемоническая фраза (отправителя транзакции);<br>
+  Адрес отправителя (должен быть сгенерирован из мнемонической фразы или же подходить к ней)<br>
+  Адрес получателя;<br>
+  Количество монет, которое вы хотите перевести (для некоторых типов транзакции или подтипов транзакции, количество монет может быть рано нулю);<br>
+  Адрес получателя;<br>
+  Обозначение токена, монеты которого вы хотите перевести (например: "uwm")<br>
+  Подтип пранзакции (например: "default_transaction")<br>
+  Данные комментария к транзакции в формате JSON(для каждого типа или подтипа транзакции указываются свои данные комметрария или же не указываются совсем);<br>
+  Тип пранзакции (Число 1 или 3);
+</ul>
+  
+```go
 transaction_raw, err := Uwim.GetRawTransaction(
     mnemonic,
     sender_address,
@@ -47,4 +79,5 @@ transaction_raw, err := Uwim.GetRawTransaction(
     transaction_comment_title,
     transaction_comment_data,
     transaction_type
-);
+)
+```
