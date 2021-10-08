@@ -2,7 +2,7 @@
 
 <h2>Установка:</h2> 
 
-```go
+```
 go get github.com/uwimchain/uwim.lib.go
 ```
 
