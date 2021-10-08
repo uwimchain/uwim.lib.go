@@ -1,4 +1,4 @@
-package Uwim
+package uwim_lib_go
 
 import (
 	"crypto/aes"
